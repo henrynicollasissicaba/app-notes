@@ -62,7 +62,7 @@ svg {
 }
 
 :root{
-  --size: 225px;
+  --size: 290px;
 }
 
 body{
@@ -73,9 +73,15 @@ body{
 .wrapper{
   display: grid;
   grid-template-columns: repeat(auto-fill, var(--size));
-  justify-content: center;
   gap: 1rem;
-  margin: .5rem .25rem;
+  margin: .75rem;
+  justify-content: center;
+}
+
+@media (min-width: 485px){
+    :root{
+      --size : 220px;
+    }
 }
 
 .add-new-note, .note{
