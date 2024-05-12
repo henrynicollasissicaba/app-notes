@@ -20,8 +20,7 @@ addNewNoteBtn.addEventListener('click', () => { // show "new note" popup
 
 closePopupBtn.addEventListener('click', () => { // close popup
     popupBox.classList.remove('show')
-    alertMsg.style.display = 'none'
-    alertMsg.style.opacity = '0'
+    removeAlertMessage()
 })
 
 addNoteBtn.addEventListener('click', () => { // add new note & save updated note button
@@ -30,29 +29,7 @@ addNoteBtn.addEventListener('click', () => { // add new note & save updated note
 
     const randomColor = randomColorBackground() // getting a random color for note background
 
-    if(!textInput){
-        alertMsg.style.display = 'block'
-        setTimeout(() => {
-            alertMsg.style.opacity = '1'; 
-        }, 1);
-
-    } else {
-        let noteInfo = {
-            noteText: textInput,
-            background: randomColor
-        }
-
-        if(!isUpdate){
-            notes.push(noteInfo)
-        } else {
-            notes[updateId].noteText = noteInfo.noteText // saving an updated note withoud modify background
-            isUpdate = false
-        }
-
-        closePopupBtn.click()
-        alertMsg.style.display = 'none'
-        alertMsg.style.opacity = '0'
-    }
+    createInfoNote(textInput, randomColor)
 
     localStorage.setItem("notes", JSON.stringify(notes))
 
@@ -74,6 +51,40 @@ const randomColorBackground = () => {
     
     const color = Math.floor(Math.random() * colors.length)
     return colors[color]
+}
+
+const createInfoNote = (input, color) => {
+    if(!input){
+        showAlertMessage()
+
+    } else {
+        let noteInfo = {
+            noteText: input,
+            background: color
+        }
+
+        if(!isUpdate){
+            notes.push(noteInfo)
+        } else {
+            notes[updateId].noteText = noteInfo.noteText // saving an updated note withoud modify background
+            isUpdate = false
+        }
+
+        closePopupBtn.click()
+        removeAlertMessage()
+    }
+}
+
+const showAlertMessage = () => {
+    alertMsg.style.display = 'block'
+        setTimeout(() => {
+            alertMsg.style.opacity = '1'
+        }, 1)
+}
+
+const removeAlertMessage = () => {
+    alertMsg.style.display = 'none'
+    alertMsg.style.opacity = '0'
 }
 
 const showNotes = () => {
