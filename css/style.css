@@ -62,91 +62,180 @@ svg {
 }
 
 :root{
+  /* tamanho das notas */
   --size: 290px;
+
+  /* box shadow geral */
+  --bx-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 0px 0px 1px #373636;
+
+  /* cores da aplicação */
+  --neutral-clr: #484848;
+  --main-color-50: #edfaff;
+  --main-color-100: #d6f2ff;
+  --main-color-200: #b5eaff;
+  --main-color-500: #1eadff;
+  --main-color-600: #068fff;
+  --main-color-700: #007bff;
+  --main-color-950: #0e315d;
 }
 
 body{
-    background-color: #373636;
     font-family: "Poppins", sans-serif;
+}
+
+/* REUSABLE CLASSES STARTS*/
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+/* REUSABLE CLASSES ENDS*/
+
+.main{
+  position: relative;
 }
 
 .wrapper{
   display: grid;
   grid-template-columns: repeat(auto-fill, var(--size));
-  gap: 1rem;
-  margin: .75rem;
+  gap: .5rem;
+  width: 100%;
   justify-content: center;
+  padding: 1rem;
+  background-color: var(--neutral-clr);
+  min-height: 100vh;
 }
 
-@media (min-width: 485px){
-    :root{
-      --size : 220px;
-    }
-}
-
-.add-new-note, .note{
+.note{
   width: var(--size);
   height: var(--size);
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 0px 0px 1px #373636;
+  box-shadow: var(--bx-shadow);
 }
 
 .add-new-note{
-  background-color: #fff7f7;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  color: #373636;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  color: var(--main-color-950);
   cursor: pointer;
+  width: auto;
+  padding: 1rem;
+  z-index: 3;
 }
 
 .add-new-note ion-icon{
   font-size: 2rem;
   border-radius: 50%;
-  border: 2px dashed #373636;
+  border: 2px solid var(--main-color-950);
   padding: 1rem;
+  background-color: var(--main-color-100);
+  transform: scale(1);
+  transition: transform .2s ease;
+}
+
+.add-new-note:hover ion-icon{
+  transform: scale(1.2);
+}
+
+.saved-notes{
+  background-color: var(--main-color-100);
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: .5rem;
+  border-radius: .5rem;
+}
+
+.saved-notes p{
+  font-size: 1.125rem;
+  color: var(--main-color-950);
+}
+
+.saved-notes #note-length{
+  display: block;
+  color: var(--main-color-700);
+  font-weight: 600;
 }
 
 .note{
-  padding: 1rem 1rem 0 1rem;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  padding: .5rem 1rem 0 1rem;
   justify-content: space-between;
   font-family: "Handlee", cursive;
-  /* background-color: #fff7f7; */
+  background-color: #A5DD9B;
 }
 
 .note .content{
+  margin-top: 1rem;
   font-size: 1.25rem;
   overflow: auto;
   padding-bottom: .5rem;
 }
 
-.note .options{
-  border-top: 1.5px solid #373636;
-  display: flex;
-  justify-content: flex-end;
-  gap: .5rem;
-  padding: .25rem 0;
+.note .content::-webkit-scrollbar{
+  display: none;
 }
 
-.note .options li{
-  list-style: none;
-  display: flex;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: .5rem;
-  font-size: .875rem;
+.content p{
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-top: .5rem;
+}
+
+.note .popup-options{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup-options ion-icon[name="ellipsis-vertical"]{
+  display: block;
+  margin: .5rem .5rem 0 auto;
+  padding: .25rem;
   cursor: pointer;
-  /* border-radius: .5rem; */
-  transition: .2s ease;
+  border: 1.5px solid var(--neutral-clr);
+  border-radius: 50%;
 }
 
-.note .options li:hover{
-  background-color: rgba(0, 0, 0, 0.15);
+.popup-options .options{
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  padding: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px 0px;
+  backdrop-filter: blur(5px);
+  transition: all .2s ease;
+}
+
+.options{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.options.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.options button{
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  padding: .5rem .5rem .25rem .5rem;
+  cursor: pointer;
+  transition: .2s ease;
+  box-shadow: rgba(150, 150, 150, 0.4) 0px 0px 0px 2px, rgb(235, 235, 235) 0px 4px 6px -1px, rgb(255, 255, 255) 0px 1px 0px inset;
+}
+
+.options button:hover{
+  color: var(--main-color-950);
 }
 
 .popup-box{
@@ -179,7 +268,8 @@ body{
   width: 100%;
   padding: 1rem;
   margin: 1rem .5rem .5rem;
-  background-color: #dedede;
+  background-color: var(--main-color-50);
+  border: 1px solid var(--main-color-600);
 }
 
 .popup-box .popup .popup-content{
@@ -191,17 +281,17 @@ body{
 
 .popup-content h1{
   font-size: 1.125rem;
+  color: var(--main-color-950);
 }
 
 .popup-content ion-icon{
   font-size: 1.75rem;
   padding: .5rem;
   cursor: pointer;
+  color: var(--main-color-950);
 }
 
 .popup-box .popup .new-note{
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
 }
 
@@ -215,27 +305,31 @@ body{
 .new-note button{
   padding: .5rem 0;
   cursor: pointer;
-  background-color: #0084e3;
-  color: #fff7f7;
-  transition: .2s ease;
+  background-color: var(--main-color-100);
+  color: var(--main-color-950);
+  transition: .2s ease-in-out;
 }
 
-.popup-box .popup,
 .new-note textarea,
 .new-note button,
-.new-note .alert-message{
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05), inset 0px 0px 0px 1px #373636;
+.saved-notes{
+  border: 1px solid var(--main-color-500);
 }
 
 .new-note button:hover{
-  background-color: #3eafff;
+  background-color: var(--main-color-200);
 }
 
-.new-note .alert-message{
-  text-align: center;
-  padding: .5rem;
-  background-color: #ffff28;
-  display: none;
-  opacity: 0;
-  transition: .1s ease-in-out;
+/* MEDIA QUERIES */
+@media (min-width: 485px){
+  :root{
+    --size : 220px;
+  }
+}
+
+@media(max-width: 485px){
+  .saved-notes{
+    height: 100px;
+    padding: 1.5rem 1rem;
+  }
 }

@@ -9,59 +9,41 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <script src="./js/script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="./favicon/icon.jpg" type="image/x-icon">
+    <script src="./js/script.js" type="module" defer></script>
   </head>
   <body>
-    <div class="popup-box">
+
+    <!-- popup para adicionar / atyalizar uma nota (início) -->
+    <section class="popup-box">
       <div class="popup">
         <div class="popup-content">
-          <h1>Add a new note</h1>
+          <h1>Adicionar uma nova nota</h1>
           <ion-icon name="close-outline" id="closeBtn"></ion-icon>
         </div>
-        <div class="new-note">
-          <textarea name="input-note" id="input-note" maxlength="300" placeholder="Write a new note here (maximum: 300)."></textarea>
-          <button id="add-btn">Add note</button>
-          <p class="alert-message">Please, write something...</p>
+        <div class="new-note flex-column">
+          <textarea name="input-note" id="input-note" maxlength="300" placeholder="Escreva aqui (máximo de: 300 caracteres)."></textarea>
+          <button id="add-btn">Adicionar nota</button>
         </div>
       </div>
-    </div>
-    <div class="wrapper">
-      <div class="add-new-note">
-        <ion-icon name="add-outline"></ion-icon>
-        <h1>Add a new note</h1>
-      </div>
-      <!-- <div class="note">
-        <div class="content">
-          <p>this is a note</p>
-        </div>
-        <div class="options">
-          <li><ion-icon name="pencil-outline"></ion-icon>Edit</li>
-          <li><ion-icon name="trash-outline"></ion-icon>Delete</li>
-        </div>
-      </div>
-      <div class="note">
-        <div class="content">
-          <p>this is a note Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto voluptates modi eos dolorem molestiae quibusdam nisi eligendi ad molestias sed, repellendus cupiditate. Libero dignissimos voluptates tenetur ullam deleniti molestias debitis?</p>
-        </div>
-        <div class="options">
-          <li><ion-icon name="pencil-outline"></ion-icon>Edit</li>
-          <li><ion-icon name="trash-outline"></ion-icon>Delete</li>
-        </div>
-      </div>
-      <div class="note">
-        <div class="content">
-          <p>this is a note</p>
-        </div>
-        <div class="options">
-          <li><ion-icon name="pencil-outline"></ion-icon>Edit</li>
-          <li><ion-icon name="trash-outline"></ion-icon>Delete</li>
-        </div>
-      </div> -->
-    </div>
+    </section>
+    <!-- popup para adicionar / atyalizar uma nota (início) -->
 
+    <!-- parte principal das notas (início) -->
+    <main class="main">
+      <div class="add-new-note flex-column">
+        <ion-icon name="add-outline"></ion-icon>
+      </div>
+
+      <div class="wrapper">
+        <div class="saved-notes">
+          <p>Você possui: <span id="note-length"></span></p>
+        </div>
+      </div>
+    </main>
+    <!-- parte principal das notas (início) -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -70,5 +52,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.5/purify.min.js" integrity="sha512-JatFEe90fJU2nrgf27fUz2hWRvdYrSlTEV8esFuqCtfiqWN8phkS1fUl/xCfYyrLDQcNf3YyS0V9hG7U4RHNmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </body>
 </html>
