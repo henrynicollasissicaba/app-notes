@@ -29,6 +29,7 @@ criado para permitir que as pessoas escrevam lembretes temporários sobre datas 
 <p><b>Henry Nicollas Issicaba Neves</b></p>
 <div display="flex">
   <a href="https://www.linkedin.com/in/henry-nicollas-issicaba-neves-05a54024a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="mailto:henrynissicaba@gmail.com"><img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red"></a>
 </div>
           
           
