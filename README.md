@@ -5,7 +5,8 @@
 ## Sobre o projeto :computer:
 
 Uma aplicação web que simula a utilização de um Post-it. O Post-it é um pequeno pedaço de papel com uma tira adesiva, 
-criado para permitir que as pessoas escrevam lembretes temporários sobre datas ou tarefas.
+criado para permitir que as pessoas escrevam lembretes temporários sobre datas ou tarefas. Após uma nota ser criada, um background colorido 
+é gerado aleatoriamente.
 
 ---
 
